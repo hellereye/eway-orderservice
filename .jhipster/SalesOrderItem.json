@@ -1,0 +1,79 @@
+{
+  "name": "SalesOrderItem",
+  "fields": [
+    {
+      "fieldName": "barcode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "skuCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "sprec",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "SalesOrderItemStatus",
+      "fieldValues": "AVAILABLE,OUT_OF_STOCK,BACK_ORDER"
+    },
+    {
+      "fieldName": "salesUnit",
+      "fieldType": "UnitOfMeasurement",
+      "fieldValues": "PIECE,KILOGRAM,GRAM,LITER"
+    },
+    {
+      "fieldName": "discountRate",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "discountAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "subtotal",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "shipped",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "delivered",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "salesOrder",
+      "otherEntityRelationshipName": "orderItems",
+      "relationshipName": "salesOrder",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200827020017",
+  "entityTableName": "sales_order_item",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["orderService"]
+}

@@ -1,0 +1,100 @@
+{
+  "name": "SalesOrder",
+  "fields": [
+    {
+      "fieldName": "orderNo",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "deliveryAddress",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dealerCode",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "SalesOrderStatus",
+      "fieldValues": "PENDING,CANCELLED,SHIPPED,COMPLETED"
+    },
+    {
+      "fieldName": "total",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min"],
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "isInvoicing",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "invoiceNo",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "placedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "payChannel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paydate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "outTradeNo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "settlementStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "settlementDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deliveriedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "customerNo",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerRemark",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "salesOrderItem",
+      "otherEntityRelationshipName": "salesOrder",
+      "relationshipName": "orderItems"
+    }
+  ],
+  "changelogDate": "20200827015917",
+  "entityTableName": "sales_order",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["orderService"],
+  "microserviceName": "orderService"
+}
