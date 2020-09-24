@@ -9,11 +9,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link SalesOrder} and its DTO {@link SalesOrderDTO}.
  */
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = {SalesOrderItemMapper.class})
 public interface SalesOrderMapper extends EntityMapper<SalesOrderDTO, SalesOrder> {
 
 
-    @Mapping(target = "orderItems", ignore = true)
+    //@Mapping(target = "orderItems", ignore = true)
     @Mapping(target = "removeOrderItems", ignore = true)
     SalesOrder toEntity(SalesOrderDTO salesOrderDTO);
 

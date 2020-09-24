@@ -19,7 +19,9 @@ import com.mycloud.order.domain.enumeration.SalesOrderStatus;
  */
 @Entity
 @Table(name = "sales_order")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@NamedEntityGraph(name = "order.orderItems",
+    attributeNodes = @NamedAttributeNode("orderItems")) //解决N+1,使orderItems成为了left outer join并急迫加载；
 public class SalesOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -86,8 +88,9 @@ public class SalesOrder implements Serializable {
     @Column(name = "customer_remark")
     private String customerRemark;
 
-    @OneToMany(mappedBy = "salesOrder")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    //@OneToMany(mappedBy = "salesOrder")
+    @OneToMany(mappedBy = "salesOrder", fetch=FetchType.EAGER,cascade = CascadeType.ALL, orphanRemoval = true)
+    //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<SalesOrderItem> orderItems = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

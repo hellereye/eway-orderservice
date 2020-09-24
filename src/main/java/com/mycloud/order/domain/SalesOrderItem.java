@@ -19,7 +19,7 @@ import com.mycloud.order.domain.enumeration.UnitOfMeasurement;
  */
 @Entity
 @Table(name = "sales_order_item")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class SalesOrderItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,7 +69,8 @@ public class SalesOrderItem implements Serializable {
     @Column(name = "delivered")
     private LocalDate delivered;
 
-    @ManyToOne
+    //@ManyToOne
+    @ManyToOne(optional = false)
     @JsonIgnoreProperties(value = "orderItems", allowSetters = true)
     private SalesOrder salesOrder;
 

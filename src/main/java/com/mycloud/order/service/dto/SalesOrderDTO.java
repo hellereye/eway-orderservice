@@ -4,13 +4,15 @@ import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Set;
+
 import com.mycloud.order.domain.enumeration.SalesOrderStatus;
 
 /**
  * A DTO for the {@link com.mycloud.order.domain.SalesOrder} entity.
  */
 public class SalesOrderDTO implements Serializable {
-    
+
     private Long id;
 
     @NotNull
@@ -52,8 +54,17 @@ public class SalesOrderDTO implements Serializable {
     private Long customerNo;
 
     private String customerRemark;
+    public Set<SalesOrderItemDTO> getOrderItems() {
+        return orderItems;
+    }
 
-    
+    public void setOrderItems(Set<SalesOrderItemDTO> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    private Set<SalesOrderItemDTO> orderItems;
+
+
     public Long getId() {
         return id;
     }
